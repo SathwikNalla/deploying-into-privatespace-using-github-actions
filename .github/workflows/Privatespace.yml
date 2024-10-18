@@ -159,7 +159,7 @@ jobs:
          USERNAME: ${{ secrets.CONNECTED_APP_CLIENT_ID }}
          PASSWORD: ${{ secrets.CONNECTED_APP_CLIENT_SECRET }}
 #        KEY: ${{ secrets.key }}
-         API_ID: ${{ secrets.dev_api_id }}
+#         API_ID: ${{ secrets.dev_api_id }}
          PRIVATE_SPACE_ID: ${{ secrets.PRIVATE_SPACE_ID }}
       run: |
          artifactName=$(ls *.jar | head -1)
