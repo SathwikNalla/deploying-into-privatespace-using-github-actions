@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="deploying-into-privatespace-using-github-actionsFlow" doc:id="c883a158-efc0-45ba-965a-08161d99913a" >
+		<http:listener doc:name="Listener" doc:id="82e0921b-1c71-4537-8494-58c4d2e57160" config-ref="HTTP_Listener_config" path="/PrivateSpace"/>
+		<set-variable value="Hello World !" doc:name="Set Variable" doc:id="188ee9db-b9a4-4b8e-8260-79034f928f35" variableName="Data"/>
+		<ee:transform doc:name="Transform Message" doc:id="25810418-6efd-467b-9d03-7e3a15a8a245" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+vars.Data]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
